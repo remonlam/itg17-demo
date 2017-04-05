@@ -1,4 +1,4 @@
-FROM nginx:1.10
+FROM nginx:1.10-alpine
 MAINTAINER Remon Lam [remon@containerstack.io]
 
 COPY index.html /usr/share/nginx/html/
