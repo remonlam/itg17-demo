@@ -1,2 +1,8 @@
 FROM httpd:2.4.23-alpine
-COPY . /usr/local/apache2/htdocs
+MAINTAINER Remon Lam [remon@containerstack.io]
+
+COPY index.html /usr/share/nginx/html
+
+
+CMD hostname > /usr/share/nginx/html/index.html ; nginx -g "daemon off;"
+CMD sed -i s/HOSTNAME/$hostname/g /usr/share/nginx/html/index.html
