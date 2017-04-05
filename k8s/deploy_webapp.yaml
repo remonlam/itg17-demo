@@ -29,7 +29,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: gcr.io/itg17-163120/github-remonlam-itg17-demo:0.0.2
+      - image: gcr.io/itg17-163120/github-remonlam-itg17-demo:0.0.1
         name: webapp
         env:
         ports:
