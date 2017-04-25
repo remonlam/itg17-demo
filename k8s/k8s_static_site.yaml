@@ -1,37 +1,39 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: webapp
+  name: prod-cs-web
   labels:
-    app: webapp
+    app: prod-cs-web
+  namespace: prod-cs-web-temp
 spec:
   strategy:
     type: Recreate
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:
-        app: webapp
+        app: prod-cs-web
         tier: frontend
     spec:
       containers:
-      - image: gcr.io/xenon-blade-165218/github-remonlam-itg17-demo:devstuff 
-        name: webapp
+      - image: remonlam/nginx-demo:latest
+        name: prod-cs-web
         env:
         ports:
         - containerPort: 80
-          name: webapp
+          name: prod-cs-web
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp
+  name: prod-cs-web
   labels:
-    app: webapp
+    app: prod-cs-web
+  namespace: prod-cs-web-temp
 spec:
   ports:
     - port: 80
   selector:
-    app: webapp
+    app: prod-cs-web
     tier: frontend
-  type: LoadBalancer
+  type: NodePort
