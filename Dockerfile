@@ -1,8 +1,7 @@
 FROM nginx:1.10-alpine
 MAINTAINER Remon Lam [remon@containerstack.io]
 
-RUN useradd -c 'weby' -m -d /home/weby -s /bin/bash node
-RUN chown -R weby.weby /src
+RUN adduser -S weby
 USER weby
 
 COPY index.html /usr/share/nginx/html/
