@@ -2,6 +2,7 @@ FROM nginx:1.10-alpine
 MAINTAINER Remon Lam [remon@containerstack.io]
 
 RUN adduser -S weby
+RUN chown -R weby.weby /usr/share/nginx/html/
 USER weby
 
 COPY index.html /usr/share/nginx/html/
